@@ -22,9 +22,19 @@ public class DespertarNoMuerto
     System.out.println("4. Salir");
     System.out.println();
 
-    // Solicitar Opción al Jugador
+    // Solicitar opción al Jugador
     System.out.print("Elige una opción: ");
-    opcion = teclado.nextInt();
+
+    if(teclado.hasNextInt()) {
+
+        opcion = teclado.nextInt();
+
+    } else {
+        
+        opcion = 0;
+    }
+
+    teclado.nextLine();
 
     // Evaluar la opción seleccionada
     switch (opcion) {
@@ -41,7 +51,7 @@ public class DespertarNoMuerto
             System.out.println("Has elegido Salir");
             break;
         default:
-            System.out.println("Opción no válida");
+            System.out.println("Opción no válida. Introduce un número del 1 al 4");
             break;
     
         }
