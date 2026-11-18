@@ -11,7 +11,7 @@ public class DespertarNoMuerto
     
     // Título del Juego
     do {
-    System.out.println("EL Despertar del no Muerto");
+    System.out.println("EL Despertar del No Muerto");
     System.out.println("Cenizas del Reino");
 
     // Menú Principal
@@ -36,10 +36,36 @@ public class DespertarNoMuerto
 
     teclado.nextLine();
 
-    // Evaluar la opción seleccionada
+    
     switch (opcion) {
         case 1:
-            System.out.println("Has elegido Nueva Partida");
+            System.out.println("El reino te llama, No Muerto...");
+
+            String nombre;
+
+            do {
+            
+                System.out.print("Introduce el nombre de tu personaje: ");
+                nombre = teclado.nextLine().trim();
+
+                if (nombre.isEmpty()) {
+                    System.out.println("El nombre no puede estar vacío.");
+                }
+
+                
+            } while (nombre.isEmpty());
+            
+            // Estadísticas iniciales del personaje
+            int vidaMaxima = 100;
+            int vida = vidaMaxima;
+            int pociones = 3;
+
+            // Mostrar información del personaje
+            System.out.println("Bienvenido al Reino de las cenizas, " + nombre);
+            System.out.println(" Vida: " + vida + " / " + vidaMaxima + " PV");
+            System.out.println(" Pociones: " + pociones);
+
+
             break;
         case 2:
             System.out.println("Has elegido Registro de No Muertos");
@@ -60,6 +86,6 @@ public class DespertarNoMuerto
 
     // Cerrar Scanner
     teclado.close();
-    }
-
 }
+}
+
