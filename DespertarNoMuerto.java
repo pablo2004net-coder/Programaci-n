@@ -114,7 +114,26 @@ public class DespertarNoMuerto
                     }
                     break;
             case 2:
-                System.out.println("Has elegido usar una poción.");
+
+                    if (pociones > 0 && vida < vidaMaxima) {
+
+                        
+                vida = vida + 25;
+                pociones = pociones - 1;
+
+                if (vida > vidaMaxima) {
+                    vida = vidaMaxima;
+
+                }
+
+                System.out.println(" Has utilizado una poción. ");
+                System.out.println(" Tu vida: " + vida + "/" + vidaMaxima + " PV");
+                System.out.println(" Pociones restantes: " + pociones);
+
+                } else {
+
+                        System.out.println("No puedes usar una poción en este momento.");
+                }
                 break;
             case 3:
                 System.out.println("Has abandonado el combate.");
