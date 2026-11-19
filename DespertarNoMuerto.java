@@ -90,9 +90,13 @@ public class DespertarNoMuerto
         switch (opcionCombate) {
 
             case 1:
-                int dano = 10;
+                int dano = (int) (Math.random() * 11) + 10; 
 
                     vidaEnemigo = vidaEnemigo - dano;
+
+                    if (vidaEnemigo < 0) {
+                        vidaEnemigo = 0;
+                    }
 
                     System.out.println("Has atacado al " + nombreEnemigo);
                     System.out.println("El " + nombreEnemigo + " ha recibido " + dano + " puntos de daño.");
@@ -100,7 +104,7 @@ public class DespertarNoMuerto
 
                     if (vidaEnemigo > 0) {
 
-                        int danoEnemigo = 5;
+                        int danoEnemigo = (int) (Math.random() * 11) + 5; 
 
                         vida = vida - danoEnemigo;
 
