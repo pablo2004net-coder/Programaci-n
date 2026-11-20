@@ -75,6 +75,7 @@ public class DespertarNoMuerto {
                             System.out.println("1. Atacar");
                             System.out.println("2. Usar poción");
                             System.out.println("3. Abandonar el combate");
+                            System.out.println("4. Consultar inventario");
                             System.out.print("Elige una opción: ");
 
                             int opcionCombate;
@@ -128,8 +129,15 @@ public class DespertarNoMuerto {
                                     abandonar = true;
                                     break;
 
+                                case 4:
+                                    System.out.println();
+                                    System.out.println("--- Inventario ---:");
+                                    mostrarEstadisticas(vida, vidaMaxima, pociones);
+                                    System.out.println("Puntuacion: " + puntuacion);
+                                    break;
+
                                 default:
-                                    System.out.println("Opción no válida. Introduce un número del 1 al 3.");
+                                    System.out.println("Opción no válida. Introduce un número del 1 al 4.");
                                     break;
                             } // Fin switch del combate.
                         } // Fin while del combate actual.
@@ -160,7 +168,22 @@ public class DespertarNoMuerto {
                     System.out.println("Has elegido Registro de No Muertos");
                     break;
                 case 3:
-                    System.out.println("Has elegido Ayuda");
+                    System.out.println();
+                    System.out.println("=== AYUDA DEL JUEGO ===");
+                    System.out.println("Tu objetivo es derrotar a los tres enemigos.");
+                    System.out.println("Comienzas con 100 puntos de vida y 3 pociones.");
+                    System.out.println("Cada poción recupera 25 puntos de vida.");
+                    System.out.println();
+                    System.out.println("OPCIONES DEL COMBATE:");
+                    System.out.println("1. Atacar: haces entre 10 y 20 puntos de daño.");
+                    System.out.println("2. Usar poción: recuperas hasta 25 puntos de vida.");
+                    System.out.println("3. Abandonar: terminas la partida.");
+                    System.out.println("4. Consultar inventario: ves tus recursos.");
+                    System.out.println();
+                    System.out.println("Cada enemigo derrotado suma 100 puntos.");
+                    System.out.println("Si ganas, recibes un bonus por la vida restante.");
+                    System.out.println("Puedes consultar tus mejores resultados en el ranking.");
+                    System.out.println("¡Buena suerte!");
                     break;
                 case 4:
                     System.out.println("Has elegido Salir");
