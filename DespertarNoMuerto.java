@@ -65,14 +65,10 @@ public class DespertarNoMuerto
 
             // Mostrar información del personaje
             System.out.println("Bienvenido al Reino de las cenizas, " + nombre);
-            System.out.println(" Vida: " + vida + " / " + vidaMaxima + " PV");
-            System.out.println(" Pociones: " + pociones);
-
-            System.out.println();
-            System.out.println(" Un enemigo aparece entre las cenizas...");
-            System.out.println("Enemigo: " + nombreEnemigo);
-            System.out.println(" Vida del enemigo: " + vidaEnemigo + " PV");
-
+            mostrarEstadisticas(vida, vidamaxima, pociones);
+        
+            mostrarEnemigo(nombreEnemigo, vidaEnemigo);
+        
             boolean abandonar = false;
 
             while (vidaEnemigo > 0 && vida > 0 && !abandonar) {
@@ -184,5 +180,19 @@ public class DespertarNoMuerto
     // Cerrar Scanner
     teclado.close();
 }
+    
+
+public static void mostrarEnemigo(String nombre, int vida) {
+
+    System.out.println();
+    System.out.println("Un enemigo aparece entre las cenizas...");
+    System.out.println("Enemigo: " + nombre);
+    System.out.println("Vida del enemigo: " + vida + " PV");
 }
 
+
+public static void mostrarEstadisticas(int vida, int vidaMaxima, int pociones) {
+    System.out.println("Vida: " + vida + " / " + vidaMaxima + " PV");
+    System.out.println("Pociones: " + pociones);
+}
+}
