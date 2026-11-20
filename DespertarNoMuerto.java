@@ -146,7 +146,7 @@ public class DespertarNoMuerto {
                             puntuacion = puntuacion + 100;
 
                             System.out.println();
-                            System.out.println("Has derrotado al" + nombreEnemigo + "!");
+                            System.out.println("Has derrotado al " + nombreEnemigo + "!");
                             System.out.println("Has conseguido 100 puntos.");
                             System.out.println("Puntuación total: " + puntuacion);
                         }
@@ -160,12 +160,26 @@ public class DespertarNoMuerto {
 
                         System.out.println("¡Has derrotado a todos los enemigos!");
                         System.out.println("Bonus por vida restante: " + vida + " puntos.");
-                        System.out.println("Puntuación final: " + puntuacion);
                     }
+
+                    // Mostrar y guardar la puntuación, también si mueres o abandonas.
+                    System.out.println("Puntuación final: " + puntuacion);
+                    cantidadJugadores = guardarPuntuacion(
+                        nombresRanking, puntosRanking, cantidadJugadores, nombre, puntuacion
+                    );
                     break;
 
                 case 2:
-                    System.out.println("Has elegido Registro de No Muertos");
+                    System.out.println();
+                    System.out.println("=== REGISTRO DE NO MUERTOS ===");
+                    if (cantidadJugadores == 0) {
+                        System.out.println("Todavía no hay puntuaciones.");
+                    } else {
+                        for (int i = 0; i < cantidadJugadores; i++) {
+                            System.out.println((i + 1) + ". " + nombresRanking[i]
+                                + " - " + puntosRanking[i] + " puntos");
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println();
@@ -195,6 +209,33 @@ public class DespertarNoMuerto {
         } while (opcion != 4);
 
         teclado.close();
+    }
+
+    // Inserta la puntuación en orden descendente y mantiene solo los cinco mejores.
+    // En caso de empate, los jugadores anteriores aparecen primero.
+    public static int guardarPuntuacion(String[] nombres, int[] puntos,
+                                       int cantidad, String nuevoNombre, int nuevosPuntos) {
+        int posicion = 0;
+        while (posicion < cantidad && nuevosPuntos <= puntos[posicion]) {
+            posicion++;
+        }
+
+        if (posicion >= 5) {
+            return cantidad;
+        }
+
+        int ultimo = Math.min(cantidad, 4);
+        for (int i = ultimo; i > posicion; i--) {
+            nombres[i] = nombres[i - 1];
+            puntos[i] = puntos[i - 1];
+        }
+
+        nombres[posicion] = nuevoNombre;
+        puntos[posicion] = nuevosPuntos;
+        if (cantidad < 5) {
+            cantidad++;
+        }
+        return cantidad;
     }
 
     public static void mostrarEnemigo(String nombre, int vida) {
