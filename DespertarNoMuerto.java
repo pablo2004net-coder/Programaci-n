@@ -6,9 +6,13 @@ public class DespertarNoMuerto {
         Scanner teclado = new Scanner(System.in);
         int opcion;
 
+        String[] nombresRanking = new String[5];
+        int[] puntosRanking = new int[5];
+        int cantidadJugadores = 0;
+
         do {
-            System.out.println("EL Despertar del No Muerto");
-            System.out.println("Cenizas del Reino");
+            System.out.println("-----EL Despertar del No Muerto-----");
+            System.out.println("-----Cenizas del Reino-----");
             System.out.println();
             System.out.println("1. Nueva Partida");
             System.out.println("2. Registro de No Muertos");
@@ -41,6 +45,7 @@ public class DespertarNoMuerto {
                     int vidaMaxima = 100;
                     int vida = vidaMaxima;
                     int pociones = 3;
+                    int puntuacion = 0;
 
                     // Enemigos en el orden en que aparecen.
                     String[] enemigos = {
@@ -130,9 +135,12 @@ public class DespertarNoMuerto {
                         } // Fin while del combate actual.
 
                         if (vidaEnemigo <= 0) {
+                            puntuacion = puntuacion + 100;
+
                             System.out.println();
-                            System.out.println("¡Has derrotado al " + nombreEnemigo + "!");
-                            System.out.println("Las cenizas del enemigo se desvanecen...");
+                            System.out.println("Has derrotado al" + nombreEnemigo + "!");
+                            System.out.println("Has conseguido 100 puntos.");
+                            System.out.println("Puntuación total: " + puntuacion);
                         }
                     } // Fin for de los tres enemigos.
 
@@ -140,8 +148,11 @@ public class DespertarNoMuerto {
                         System.out.println("HAS MUERTO");
                         System.out.println("Tu aventura ha terminado en las cenizas del reino.");
                     } else if (!abandonar) {
+                        puntuacion = puntuacion + vida;
+
                         System.out.println("¡Has derrotado a todos los enemigos!");
-                        System.out.println("Has alcanzado la última hoguera.");
+                        System.out.println("Bonus por vida restante: " + vida + " puntos.");
+                        System.out.println("Puntuación final: " + puntuacion);
                     }
                     break;
 
